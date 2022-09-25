@@ -35,6 +35,12 @@ router.put("/books/:bookId/review/:reviewId" , reviewController.updateReview)
 //=============================== Delete Review ===================================//
 router.delete("/books/:bookId/review/:reviewId" , reviewController.deleteReview)
 
+//=============In the Put Api and Delete Api if the BookId is not present==========//
+//=============In the params so this Api return the erorr in the response==========//
+router.all("/*", function(req,res){
+    res.status(404).send({status:false,msg:"bookId is not present in the path params"})
+})
+
 
 module.exports = router;
 
