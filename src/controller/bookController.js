@@ -69,7 +69,7 @@ const createBooks = async function (req, res) {
         return res.status(500).send({ status: false, msg: err.message })
     }
 }
-
+//============================================= GETALLBOOKS API ===============================//
 const getallBook = async function (req, res) {
 
     try {
@@ -112,7 +112,7 @@ const getallBook = async function (req, res) {
         })
     }
 }
-
+//==============================================GETBOOKBYID API ==============================//
 const getBooksById = async function (req, res) {
 
     try {
@@ -146,7 +146,7 @@ const getBooksById = async function (req, res) {
     }
 }
 
-
+//========================================== UPDATE BOOK API ========================//
 const updatebooks = async function (req, res) {
 
     try {
@@ -205,7 +205,7 @@ const updatebooks = async function (req, res) {
     }
 }
 
-
+//============================================ DELETE BYID =============================//
 const deletebyId = async function (req, res) {
 
     try {

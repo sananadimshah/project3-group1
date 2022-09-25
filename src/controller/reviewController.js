@@ -4,6 +4,7 @@ const userModel = require("../models/usermodel")
 const { isValid, isValidObjectId, isValidRegex1, isValidRequestBody } = require("../validator/validator")
 const moment = require("moment")
 
+//========================================= CREATE REVIEW API ==============================//
 const CreateReview = async function (req, res) {
 
     try {
@@ -67,7 +68,7 @@ const CreateReview = async function (req, res) {
 // //   rating: 4,
 // //   review: "An exciting nerving thriller. A gripping tale. A must read book."
 // // }
-
+//============================================== UPDATE REVIEW API ============================//
 const updateReview = async function (req, res) {
 
     try {
@@ -122,7 +123,7 @@ const updateReview = async function (req, res) {
         const updateReview =  await reviewModel.findByIdAndUpdate({_id :reviewId},{$set :obj},{new : true});
 
         // updateReview.bookId = bookId
-        let combineBookRewiew = JSON.parse(JSON.stringify(requiredBook))
+        let combineBookRewiew = requiredBook.toObject()// convert into object //moogose function
         combineBookRewiew["reviewData"] = updateReview
 
         return res.status(200).send({status : true , msg : "Update Success Done", data : combineBookRewiew})
@@ -132,7 +133,7 @@ const updateReview = async function (req, res) {
     }
 }
 
-
+//================================================ DELETE REVIEW API ============================//
 const deleteReview = async function (req, res) {
 
     try {

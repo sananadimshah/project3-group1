@@ -10,7 +10,9 @@ const CreateUser = async function (req, res) {
 
     //============================== Title validation ==========================================//
 
-    if (!isValid(title)) return res.status(400).send({ status: false, msg: "Please give title data in Correct format" })
+    let requirefield = ["title", "name", "phone", "email", "password","address"]
+
+    if (!isValid(title)) return res.status(400).send({ status: false, msg: "Please give title is not present in " })
     if (!["Mr", "Mrs", "Miss"].includes(title)) return res.status(400).send({ status: false, msg: `Title should be among Mr, Mrs, Miss` })
 
     //=============================== name validation==============================//
@@ -62,10 +64,11 @@ const CreateUser = async function (req, res) {
     const data = { title, name, phone, email, password, address}
     let savedata = await usermodel.create(data)
     res.status(201).send({ status: true, message: "Success user register", data: savedata })
+
 }
+//======================================== LOGIN API ===========================================//
 
-
-const loginuser = async (req, res) => {
+const loginUser = async (req, res) => {
 
     try {
 
@@ -102,5 +105,5 @@ const loginuser = async (req, res) => {
 
 
 
-module.exports = { CreateUser, loginuser }
+module.exports = { CreateUser,loginUser}
 
